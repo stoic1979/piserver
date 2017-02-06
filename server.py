@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    templateData = { 'year' : 2017 }
+    templateData = { 'title' : 'Home' }
 
     # pass the template data into the template index.html and
     # return it to the user
