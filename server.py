@@ -16,7 +16,7 @@ def hello():
     return render_template('index.html', **templateData)
 
 @app.route("/wifi")
-def hello():
+def wifi():
     templateData = { 'wifis' : get_wifis() }
 
     return render_template('wifi.html', **templateData)
