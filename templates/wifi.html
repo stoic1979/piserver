@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Available Wifi networks are</h1>
+    {% for wifi in wifis %}
+       <p>{{ wifi }}</p>
+    {% endfor %}
+{% endblock %}
