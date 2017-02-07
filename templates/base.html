@@ -7,9 +7,11 @@
     {% endif %}
   </head>
   <body>
-      <div><img src="{{url_for('static', filename='imgs/pi_server.png')}}" width="150" height="100"></img>
-          <a href="/">Home</a></div>
-          <a href="/wifi">WIFI</a></div>
+      <div>
+          <img src="{{url_for('static', filename='imgs/pi_server.png')}}" width="150" height="100"></img>
+          <a href="/">Home</a>
+          <a href="/wifi">WIFI</a>
+      </div>
     <hr>
     {% block content %}{% endblock %}
     <hr>
