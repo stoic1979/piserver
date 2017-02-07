@@ -13,6 +13,18 @@ def get_wifis(dev='wlan0'):
     function scans wifi nws on given device
     and retuns the list of ssids
 
+    Scanning requires root permission to see all the networks.
+
+    Each cell object should have the following attributes:
+     + ssid
+     + signal
+     + quality
+     + frequency
+     + bitrates
+     + encrypted
+     + channel
+     + address
+     + mode
     """
     ssids = []
 
@@ -26,6 +38,6 @@ def get_wifis(dev='wlan0'):
     return ssids
 
 if __name__ == "__main__":
-    #print get_wifis('wlp3s0') # used this on my laptop
-    print get_wifis()          # used this on pi
+    print get_wifis('wlp3s0') # used this on my laptop
+    #print get_wifis()          # used this on pi
 
