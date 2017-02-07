@@ -26,5 +26,6 @@ def get_wifis(dev='wlan0'):
     return ssids
 
 if __name__ == "__main__":
-    print get_wifis('wlp3s0')
+    #print get_wifis('wlp3s0') # used this on my laptop
+    print get_wifis()          # used this on pi
 
