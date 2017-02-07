@@ -4,6 +4,7 @@
 
 from flask import Flask, render_template, request
 from nw import *
+from bt import *
 
 app = Flask(__name__)
 
@@ -20,6 +21,12 @@ def wifi():
     templateData = { 'wifis' : get_wifis() }
 
     return render_template('wifi.html', **templateData)
+
+@app.route("/bluetooth")
+def bluetooth():
+    templateData = { 'bluetooths' : get_bluetooth_devices() }
+
+    return render_template('bluetooth.html', **templateData)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)

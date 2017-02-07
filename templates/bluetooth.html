@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Available Bluetooth networks are</h1>
+    {% for bluetooth in bluetooths %}
+       <p>{{ bluetooth }}</p>
+    {% endfor %}
+{% endblock %}
