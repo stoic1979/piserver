@@ -5,8 +5,11 @@
 from flask import Flask, render_template, request
 from nw import *
 from bt import *
+from gpio import GpioManager
 
 app = Flask(__name__)
+
+gm = GpioManager()
 
 @app.route("/")
 def hello():
@@ -30,11 +33,17 @@ def bluetooth():
 
 @app.route("/gpio")
 def gpio():
-    pin = request.args.get('pin')
+    try:
+        pin = request.args.get('pin')
 
-    print "pin:", pin
+        gm.set_pin_output(int(pin))
+        gm.blink_pin(int(pin))
 
-    return "gpio %s" % str(pin)
+        print "pin:", pin
+    except Exception as exp:
+        return "GPIO: error -> %s" % exp
+
+    return "gpio success on pin: %s" % str(pin)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)

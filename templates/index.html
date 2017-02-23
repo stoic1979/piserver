@@ -10,14 +10,35 @@
         <link rel="stylesheet"  href="{{url_for('static', filename='css/style.css')}}">
 
         <script>
-$(document).ready(function(){						  
-    $("#switch1").change(function() {
-        state = $('#switch1').val();
-        $.get("/gpio?pin=1", function(data, status){
+    function send_blink_request(pin) {
+        $.get("/gpio?pin=" + pin, function(data, status){
             alert("Data: " + data + "\nStatus: " + status);
         });
+    }
+$(document).ready(function(){						  
+    $("#switch11").change(function() {
+        send_blink_request(11);
     });
 });
+
+$(document).ready(function(){						  
+    $("#switch13").change(function() {
+        send_blink_request(13);
+    });
+});
+
+$(document).ready(function(){						  
+    $("#switch15").change(function() {
+        send_blink_request(15);
+    });
+});
+
+$(document).ready(function(){						  
+    $("#switch19").change(function() {
+        send_blink_request(19);
+    });
+});
+
         </script>
 
     </head>
