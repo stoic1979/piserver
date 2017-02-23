@@ -28,12 +28,17 @@ def get_wifis(dev='wlan0'):
     """
     ssids = []
 
-    # NOTE: if you cant get list of ssids,
-    # probably, you will need to specify appropriate dev name
-    cells = Cell.all(dev)
+    try:
 
-    for cell in cells:
-        ssids.append(cell.ssid)
+        # NOTE: if you cant get list of ssids,
+        # probably, you will need to specify appropriate dev name
+        cells = Cell.all(dev)
+
+        for cell in cells:
+            ssids.append(cell.ssid)
+
+    except Exception as exp:
+        print "get_wifis() got exception:", exp
 
     return ssids
 
