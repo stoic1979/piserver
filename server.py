@@ -28,5 +28,13 @@ def bluetooth():
 
     return render_template('bluetooth.html', **templateData)
 
+@app.route("/gpio")
+def gpio():
+    pin = request.args.get('pin')
+
+    print "pin:", pin
+
+    return "gpio %s" % str(pin)
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)

@@ -9,6 +9,17 @@
         <script src="{{url_for('static', filename='js/javascript.js')}}"></script>
         <link rel="stylesheet"  href="{{url_for('static', filename='css/style.css')}}">
 
+        <script>
+$(document).ready(function(){						  
+    $("#switch1").change(function() {
+        state = $('#switch1').val();
+        $.get("/gpio?pin=1", function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+        </script>
+
     </head>
     <body>
 
