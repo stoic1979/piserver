@@ -15,7 +15,7 @@
         <!-------------------------------------------Header Start---------------------------------------->
         <div data-role="header">
             <div class="head">
-                <img src="images/pi_server.png"  id="logo" alt="Pi">
+                <img src="{{url_for('static', filename='images/pi_server.png')}}"  id="logo" alt="Pi">
                 <h1>Raspberry Pi</h1>
             </div>
         </div>
@@ -143,14 +143,16 @@
         <!-------------------------------------------WIFI Dialog Start ---------------------------------------->
         <div data-role="popup" id="WifiDialog">
             <div data-role="header">
-                <img class="img-circle" id="img_logo" src="images/logo.png">	
+                <img class="img-circle" id="img_logo" src="{{url_for('static', filename='images/logo.png')}}">	
             </div>
 
             <div data-role="main" class="ui-content">
-                <h1>Avialable Networks</h1>
+                <h1>Available Networks</h1>
+
+    {% for wifi in wifis %}
                 <div data-role="collapsibleset">
                     <div data-role="collapsible" data-iconpos="none" data-theme="b">
-                        <h2>Network 1</h2>
+                        <h2>{{ wifi }}</h2>
                         <form id="connect_form" method="GET">
                             <div class="ui-grid-a">
                                 <div class="ui-block-a">
@@ -162,46 +164,8 @@
                             </div>
                         </form>
                     </div>
+    {% endfor %}
 
-                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
-                        <h2>Network 2</h2>
-                        <form id="connect_form" method="GET">
-                            <div class="ui-grid-a">
-                                <div class="ui-block-a">
-                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
-                                </div>
-                                <div class="ui-block-b">
-                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
-                        <h2>Network 3</h2>
-                        <form id="connect_form" method="GET">
-                            <div class="ui-grid-a">
-                                <div class="ui-block-a">
-                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
-                                </div>
-                                <div class="ui-block-b">
-                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
-                        <h2>Network 4</h2>
-                        <form id="connect_form" method="GET">
-                            <div class="ui-grid-a">
-                                <div class="ui-block-a">
-                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
-                                </div>
-                                <div class="ui-block-b">
-                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div>
 
             </div>

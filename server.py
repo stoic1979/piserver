@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    templateData = { 'title' : 'Home' }
+    templateData = { 'title' : 'Home', 'wifis' : get_wifis() }
 
     # pass the template data into the template index.html and
     # return it to the user
