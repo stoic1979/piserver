@@ -1,5 +1,230 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1>About Pi Server</h1>
-    Web server to control Raspberry Pi, GPIO etc
-{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/lib/jq-mobile/jquery.mobile-1.4.5.min.css')}}">
+        <script src="{{url_for('static', filename='js/lib/jq-mobile/jquery-1.11.3.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/lib/jq-mobile/jquery.mobile-1.4.5.min.js')}}"></script>
+
+        <script src="{{url_for('static', filename='js/javascript.js')}}"></script>
+        <link rel="stylesheet"  href="{{url_for('static', filename='css/style.css')}}">
+
+    </head>
+    <body>
+
+        <!-------------------------------------------Header Start---------------------------------------->
+        <div data-role="header">
+            <div class="head">
+                <img src="images/pi_server.png"  id="logo" alt="Pi">
+                <h1>Raspberry Pi</h1>
+            </div>
+        </div>
+        <!-------------------------------------------Header Finish---------------------------------------->
+
+        <!-------------------------------------------NavBar Start ---------------------------------------->
+
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#jq-popup.html">Home</a></li>
+                <li><a href="#anylink">Page Two</a></li>
+                <li><a href="#anylink">About</a></li>
+            </ul>
+        </div>
+
+        <!-------------------------------------------Navbar Finish ---------------------------------------->
+
+
+        <!-------------------------------------------Buttons Start ---------------------------------------->	
+        <div data-role="main" class="ui-content" >
+            <a href="#WifiDialog" data-rel="popup" data-position-to="window" data-transition="flow" class="ui-btn ui-btn-inline ui-corner-all">WiFi</a>		
+            <a href="#" class="ui-btn ui-btn-inline ui-corner-all">Bluetooth</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-corner-all">Disks</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-corner-all">Processes</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b">Run Command</a>
+            <button class="ui-btn ui-btn-inline ui-corner-all ui-btn-b GPIO">GPIO</button>
+        </div>
+
+        <!-------------------------------------------Buttons Finish ---------------------------------------->
+
+        <!-------------------------------------------------GPIO Dialog Start --------------------------------------------->
+
+        <div class="GPIOtable ui-shadow" style="display: none;"> 
+            <div data-role="header">
+                <h1>GPIO Manager</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="gpioTable">
+
+                    <tbody>
+                        <tr>
+                            <td><h3>GPIO 1</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch1" data-mini="true" ></td>
+                            <td><h3>GPIO 11</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch11" data-mini="true" ></td>
+                            <td><h3>GPIO 21</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch21" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 2</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch2" data-mini="true" ></td>
+                            <td><h3>GPIO 12</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch12" data-mini="true" ></td>
+                            <td><h3>GPIO 22</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch22" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 3</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch3" data-mini="true" ></td>
+                            <td><h3>GPIO 13</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch13" data-mini="true" ></td>
+                            <td><h3>GPIO 23</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch23" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 4</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch4" data-mini="true" ></td>
+                            <td><h3>GPIO 14</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch14" data-mini="true" ></td>
+                            <td><h3>GPIO 24</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch24" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 5</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch5" data-mini="true" ></td>
+                            <td><h3>GPIO 15</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch15" data-mini="true" ></td>
+                            <td><h3>GPIO 25</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch25" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 6</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch1" data-mini="true" ></td>
+                            <td><h3>GPIO 16</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch11" data-mini="true" ></td>
+                            <td><h3>GPIO 26</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch26" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 7</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch7" data-mini="true" ></td>
+                            <td><h3>GPIO 17</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch17" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 8</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch8" data-mini="true" ></td>
+                            <td><h3>GPIO 18</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch18" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 9</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch9" data-mini="true" ></td>
+                            <td><h3>GPIO 19</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch19" data-mini="true" ></td>
+                        </tr>
+                        <tr>
+                            <td><h3>GPIO 10</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch10" data-mini="true" ></td>
+                            <td><h3>GPIO 20</h3></td>
+                            <td><input type="checkbox" data-role="flipswitch" name="switch" id="switch20" data-mini="true" ></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div data-role="footer">
+                <h1>GPIO Manager</h1>
+            </div>
+
+        </div>
+        <!-------------------------------------------GPIO Dialog Finish ---------------------------------------->
+
+
+        <!-------------------------------------------WIFI Dialog Start ---------------------------------------->
+        <div data-role="popup" id="WifiDialog">
+            <div data-role="header">
+                <img class="img-circle" id="img_logo" src="images/logo.png">	
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <h1>Avialable Networks</h1>
+                <div data-role="collapsibleset">
+                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
+                        <h2>Network 1</h2>
+                        <form id="connect_form" method="GET">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
+                                </div>
+                                <div class="ui-block-b">
+                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
+                        <h2>Network 2</h2>
+                        <form id="connect_form" method="GET">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
+                                </div>
+                                <div class="ui-block-b">
+                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
+                        <h2>Network 3</h2>
+                        <form id="connect_form" method="GET">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
+                                </div>
+                                <div class="ui-block-b">
+                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div data-role="collapsible" data-iconpos="none" data-theme="b">
+                        <h2>Network 4</h2>
+                        <form id="connect_form" method="GET">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <input type="password" name="password" id="password" data-theme="a" placeholder="Password"/>
+                                </div>
+                                <div class="ui-block-b">
+                                    <div class ="join_button"> <a type="submit" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b ui-mini">Join</a></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div data-role="footer">
+                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back" id="back_button">Go Back</a>
+            </div>
+        </div>
+
+        <!-------------------------------------------WIFI Dialog Finish ---------------------------------------->
+
+
+
+
+
+
+
+
+
+        <!-------------------------------------------Footer Start---------------------------------------
+            <div data-role="footer">
+            <h1>Raspberry Pi</h1>
+            </div> 
+            <!-------------------------------------------Footer Start---------------------------------------->
+
+    </body>
+</html>

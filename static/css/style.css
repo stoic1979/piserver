@@ -1,0 +1,69 @@
+.head img {
+  float: left;
+  width: 75;
+  height: 75px;
+  position: relative;
+  bottom: 18px;
+  
+}
+
+.head h1 {
+  position: relative;
+  top: 2px;
+  left: 8px;
+}
+
+body {
+	background-color: white;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+#img_logo {
+	max-height: 100px;
+	max-width: 100px;
+	display: block;
+    margin: 0 auto;
+}
+ 
+#img_blue {
+	max-height: 70px;
+	max-width: 100px;
+}
+
+.back_button{
+	display: block;
+    margin: 0 auto;
+}
+
+.ui-flipswitch {
+    float: center;
+	position: relative;
+	top: 10px;
+}
+
+GPIODialog {
+	height: 100px;
+	overflow: auto;
+}
+
+#gpio_logo {
+	max-height: 80px;
+	max-width: 160px;
+	display: block;
+    margin: 0 auto;
+}
+
+.join_button{
+	
+	float: right;
+	position: relative;
+	top: 2px;
+	right: 40px;
+}
+
+.ui-table-columntoggle-btn {
+    display: none !important;
+}
